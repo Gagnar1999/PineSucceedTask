@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:test_project/screens/ProfilePage.dart';
 import 'dart:math' as math;
 import '../provider/HomePageProvider.dart';
+import 'RecordAudioScreen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -53,6 +54,23 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: [
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (ctx)=> RecordAudioScreen()));
+              },
+              child: Center(
+                child: Container(
+                  height: 55,
+                  width: 55,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.indigoAccent
+                  ),
+                  child: Icon(Icons.mic, color: Colors.white, size: 35,),
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
             Expanded(
               child: Consumer<HomePageProvider>(
                 builder: (ctx, child, value) => ListView.builder(

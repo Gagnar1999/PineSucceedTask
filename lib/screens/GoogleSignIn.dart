@@ -61,7 +61,7 @@ class _GoogleSignInState extends State<GoogleSignIn> {
      Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=> HomePage()));
    }
    else{
-     print("Error in Login");
+     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("There is Some Error")));
    }
   }
 }

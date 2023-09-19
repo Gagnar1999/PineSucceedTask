@@ -7,6 +7,5 @@ class ProfileProvider with ChangeNotifier{
 
   void getLoggedInUser(){
     _user = FirebaseAuth.instance.currentUser;
-    notifyListeners();
   }
 }

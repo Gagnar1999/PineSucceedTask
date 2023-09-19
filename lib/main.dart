@@ -5,7 +5,9 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:test_project/provider/HomePageProvider.dart';
 import 'package:test_project/provider/ProfileProvider.dart';
+import 'package:test_project/provider/RecordAudioProvider.dart';
 import 'package:test_project/screens/GoogleSignIn.dart';
+import 'package:test_project/screens/Splash.dart';
 
 import 'firebase_options.dart';
 
@@ -13,6 +15,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.openBox("api_resp");
+  Hive.openBox("user");
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -28,7 +31,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_)=> HomePageProvider()),
-        ChangeNotifierProvider(create: (_)=> ProfileProvider())
+        ChangeNotifierProvider(create: (_)=> ProfileProvider()),
+        ChangeNotifierProvider(create: (_)=> RecordAudioProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -37,7 +41,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home: GoogleSignIn(),
+        home: Splash(),
       ),
     );
   }
